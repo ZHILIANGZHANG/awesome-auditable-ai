@@ -1,0 +1,80 @@
+[horizon] K=1 done
+[horizon] K=2 done
+[horizon] K=5 done
+[horizon] K=10 done
+[horizon] K=20 done
+[horizon] K=40 done
+[distance] sigma=0.0 done
+[distance] sigma=0.1 done
+[distance] sigma=0.25 done
+[distance] sigma=0.5 done
+[distance] sigma=1.0 done
+[effect] delta=0.05 done
+[effect] delta=0.1 done
+[effect] delta=0.3 done
+[effect] delta=1.0 done
+[effect_broad] delta=0.05 done
+[effect_broad] delta=0.1 done
+[effect_broad] delta=0.3 done
+[effect_broad] delta=1.0 done
+[env] f=0.0 done
+[env] f=0.1 done
+[env] f=0.3 done
+
+## Horizon (sigma=0, delta=0.3)
+| K | p_A | p_B | Δ̂ (event) | VRF indep | VRF same_seed | VRF same_seed_verbose_b | VRF event | VRF event_policy | runs/arm indep → event |
+|---|---|---|---|---|---|---|---|---|---|
+| 1 | 0.936 | 0.952 | +0.0160 ± 0.0003 | 1.00 | 6.47 | 3.76 | 6.31 | 3.68 | 2,988 → 474 |
+| 2 | 0.876 | 0.905 | +0.0288 ± 0.0004 | 1.00 | 6.07 | 3.24 | 6.31 | 3.84 | 1,647 → 261 |
+| 5 | 0.761 | 0.814 | +0.0528 ± 0.0005 | 1.00 | 5.55 | 2.52 | 6.28 | 4.06 | 878 → 140 |
+| 10 | 0.569 | 0.650 | +0.0815 ± 0.0006 | 1.00 | 4.56 | 1.90 | 5.89 | 3.90 | 520 → 89 |
+| 20 | 0.328 | 0.427 | +0.0984 ± 0.0007 | 1.00 | 3.33 | 1.49 | 4.98 | 3.37 | 358 → 72 |
+| 40 | 0.108 | 0.184 | +0.0756 ± 0.0006 | 1.00 | 2.18 | 1.20 | 3.45 | 2.47 | 331 → 96 |
+
+## Config distance (K=10, delta=0.3)
+| sigma | p_A | p_B | Δ̂ (event) | VRF same_seed | VRF same_seed_verbose_b | VRF event | runs/arm indep → event |
+|---|---|---|---|---|---|---|---|
+| 0.0 | 0.569 | 0.650 | +0.0815 ± 0.0006 | 4.56 | 1.90 | 5.89 | 520 → 89 |
+| 0.1 | 0.569 | 0.648 | +0.0792 ± 0.0006 | 4.42 | 1.89 | 5.61 | 551 → 99 |
+| 0.25 | 0.569 | 0.636 | +0.0673 ± 0.0007 | 3.65 | 1.80 | 4.37 | 767 → 176 |
+| 0.5 | 0.569 | 0.594 | +0.0251 ± 0.0009 | 2.46 | 1.57 | 2.71 | 5,558 → 2,053 |
+| 1.0 | 0.569 | 0.432 | -0.1373 ± 0.0012 | 1.58 | 1.30 | 1.59 | 179 → 113 |
+
+## Effect size, targeted change (K=10, sigma=0)
+| delta | p_A | p_B | Δ̂ (event) | VRF same_seed | VRF same_seed_verbose_b | VRF event | runs/arm indep → event |
+|---|---|---|---|---|---|---|---|
+| 0.05 | 0.569 | 0.583 | +0.0143 ± 0.0003 | 22.46 | 2.27 | 32.23 | 17,494 → 543 |
+| 0.1 | 0.569 | 0.597 | +0.0279 ± 0.0004 | 11.87 | 2.17 | 16.62 | 4,541 → 274 |
+| 0.3 | 0.569 | 0.650 | +0.0815 ± 0.0006 | 4.56 | 1.90 | 5.89 | 520 → 89 |
+| 1.0 | 0.569 | 0.798 | +0.2292 ± 0.0009 | 1.97 | 1.47 | 2.19 | 57 → 26 |
+
+## Effect size, broad change (K=10, sigma=0.25)
+| delta | p_A | p_B | Δ̂ (event) | VRF same_seed | VRF same_seed_verbose_b | VRF event | runs/arm indep → event |
+|---|---|---|---|---|---|---|---|
+| 0.05 | 0.569 | 0.567 | -0.0015 ± 0.0007 | 4.11 | 1.84 | 4.86 | 1,626,249 → 334,716 |
+| 0.1 | 0.569 | 0.581 | +0.0125 ± 0.0007 | 4.09 | 1.84 | 4.86 | 22,830 → 4,698 |
+| 0.3 | 0.569 | 0.636 | +0.0673 ± 0.0007 | 3.65 | 1.80 | 4.37 | 767 → 176 |
+| 1.0 | 0.569 | 0.789 | +0.2203 ± 0.0009 | 1.99 | 1.47 | 2.21 | 63 → 29 |
+
+## Environment noise (K=10)
+| f | p_A | p_B | Δ̂ (event) | VRF same_seed | VRF event | VRF event_policy | runs/arm indep → event |
+|---|---|---|---|---|---|---|---|
+| 0.0 | 0.601 | 0.678 | +0.0766 ± 0.0006 | 4.66 | 6.07 | 6.07 | 573 → 95 |
+| 0.1 | 0.569 | 0.650 | +0.0815 ± 0.0006 | 4.56 | 5.89 | 3.90 | 520 → 89 |
+| 0.3 | 0.455 | 0.551 | +0.0962 ± 0.0007 | 4.37 | 5.26 | 2.08 | 388 → 74 |
+
+## Unbiasedness check: Δ̂ ± SE by scheme (horizon sweep)
+- K=1: indep +0.0166±0.0007, same_seed +0.0154±0.0003, event +0.0160±0.0003, event_policy +0.0158±0.0004, same_seed_verbose_b +0.0155±0.0004
+- K=2: indep +0.0294±0.0009, same_seed +0.0290±0.0004, event +0.0288±0.0004, event_policy +0.0290±0.0005, same_seed_verbose_b +0.0288±0.0005
+- K=5: indep +0.0538±0.0012, same_seed +0.0529±0.0005, event +0.0528±0.0005, event_policy +0.0529±0.0006, same_seed_verbose_b +0.0530±0.0008
+- K=10: indep +0.0833±0.0015, same_seed +0.0827±0.0007, event +0.0815±0.0006, event_policy +0.0814±0.0008, same_seed_verbose_b +0.0826±0.0011
+- K=20: indep +0.0980±0.0015, same_seed +0.0997±0.0008, event +0.0984±0.0007, event_policy +0.0987±0.0008, same_seed_verbose_b +0.0996±0.0012
+- K=40: indep +0.0758±0.0011, same_seed +0.0751±0.0007, event +0.0756±0.0006, event_policy +0.0767±0.0007, same_seed_verbose_b +0.0750±0.0010
+
+## Reversal rate P(S_B < S_A) under event coupling
+- horizon: 1: 0.0000, 2: 0.0000, 5: 0.0000, 10: 0.0000, 20: 0.0000, 40: 0.0000
+- distance: 0.0: 0.0000, 0.1: 0.0030, 0.25: 0.0200, 0.5: 0.0738, 1.0: 0.2272
+- effect: 0.05: 0.0000, 0.1: 0.0000, 0.3: 0.0000, 1.0: 0.0000
+- effect_broad: 0.05: 0.0483, 0.1: 0.0412, 0.3: 0.0200, 1.0: 0.0029
+
+elapsed 132.0 s
